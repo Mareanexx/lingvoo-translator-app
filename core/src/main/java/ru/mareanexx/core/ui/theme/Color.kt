@@ -1,4 +1,4 @@
-package ru.mareanexx.lingvootranslatorapp.ui.theme
+package ru.mareanexx.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
