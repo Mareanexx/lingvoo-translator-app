@@ -2,6 +2,7 @@ import config.android
 import config.baseAndroidConfig
 import config.featureDefaultConfig
 import config.libs
+import gradle.kotlin.dsl.accessors._c0ebf38a9e0e766e40379ba7eaa32ea4.implementation
 
 plugins {
     id("com.android.library")
@@ -43,6 +44,7 @@ dependencies {
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
