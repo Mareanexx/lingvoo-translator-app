@@ -3,7 +3,10 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import config.appDefaultConfig
 import config.baseAndroidConfig
 import config.libs
-import gradle.kotlin.dsl.accessors._cb41af676f88d94563fb18deaa5153de.implementation
+import gradle.kotlin.dsl.accessors._0947c41b775e537d59dbf86a2721012a.androidTestImplementation
+import gradle.kotlin.dsl.accessors._0947c41b775e537d59dbf86a2721012a.debugImplementation
+import gradle.kotlin.dsl.accessors._0947c41b775e537d59dbf86a2721012a.implementation
+import gradle.kotlin.dsl.accessors._0947c41b775e537d59dbf86a2721012a.testImplementation
 
 plugins {
     id("com.android.application")

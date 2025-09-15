@@ -2,7 +2,10 @@ import config.android
 import config.baseAndroidConfig
 import config.featureDefaultConfig
 import config.libs
-import gradle.kotlin.dsl.accessors._c0ebf38a9e0e766e40379ba7eaa32ea4.implementation
+import gradle.kotlin.dsl.accessors._0947c41b775e537d59dbf86a2721012a.androidTestImplementation
+import gradle.kotlin.dsl.accessors._0947c41b775e537d59dbf86a2721012a.debugImplementation
+import gradle.kotlin.dsl.accessors._0947c41b775e537d59dbf86a2721012a.implementation
+import gradle.kotlin.dsl.accessors._0947c41b775e537d59dbf86a2721012a.testImplementation
 
 plugins {
     id("com.android.library")
