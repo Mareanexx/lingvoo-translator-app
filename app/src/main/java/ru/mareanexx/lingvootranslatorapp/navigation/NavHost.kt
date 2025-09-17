@@ -1,7 +1,6 @@
 package ru.mareanexx.lingvootranslatorapp.navigation
 
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -46,26 +45,30 @@ fun AppNavHost() {
         NavHost(
             navController = navController,
             startDestination = NavigationGraphRoutes.Home.route,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.fillMaxSize().padding(innerPadding)
         ) {
             composable(
-                route = NavigationGraphRoutes.Favorites.route,
-                enterTransition = { slideInHorizontally(initialOffsetX = { -it }) },
-                exitTransition = { slideOutHorizontally(targetOffsetX = { -it }) }
-            ){
-                FavoritesScreen()
+                route = NavigationGraphRoutes.Favorites.route
+            ) {
+                FavoritesScreen(
+                    onNavigateToMain = {
+                        navController.navigate(NavigationGraphRoutes.Home.route) {
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
+                )
             }
             composable(
-                route = NavigationGraphRoutes.Home.route,
-                enterTransition = { slideInHorizontally(initialOffsetX = { -it }) },
-                exitTransition = { slideOutHorizontally(targetOffsetX = { -it }) }
+                route = NavigationGraphRoutes.Home.route
             ) {
                 TranslatorScreen()
             }
             composable(
-                route = NavigationGraphRoutes.History.route,
-                enterTransition = { slideInHorizontally(initialOffsetX = { -it }) },
-                exitTransition = { slideOutHorizontally(targetOffsetX = { -it }) }
+                route = NavigationGraphRoutes.History.route
             ) {
                 TranslationHistoryScreen()
             }

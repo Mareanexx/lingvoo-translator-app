@@ -14,7 +14,7 @@ import javax.inject.Inject
 class FavoritesRepositoryImpl @Inject constructor(
     private val favoritesDao: FavoritesDao
 ): FavoritesRepository {
-    override suspend fun get(): Flow<List<FavoriteTranslation>> = favoritesDao.get()
+    override fun get(): Flow<List<FavoriteTranslation>> = favoritesDao.get()
 
     override suspend fun delete(toDelete: DeleteTranslationRequest): BaseResult<Unit, Unit> {
         val deleteResult = favoritesDao.deleteById(toDelete.id)
@@ -24,6 +24,8 @@ class FavoritesRepositoryImpl @Inject constructor(
             BaseResult.Success(Unit)
         }
     }
+
+    override suspend fun clearTable() = favoritesDao.clear()
 
     override suspend fun switchIsFavorite(
         word: WordTranslation,

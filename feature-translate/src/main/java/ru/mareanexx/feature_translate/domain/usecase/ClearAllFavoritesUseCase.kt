@@ -3,8 +3,9 @@ package ru.mareanexx.feature_translate.domain.usecase
 import ru.mareanexx.feature_translate.domain.repository.FavoritesRepository
 import javax.inject.Inject
 
-class GetFavoritesUseCase @Inject constructor(
+class ClearAllFavoritesUseCase @Inject constructor(
     private val favoritesRepository: FavoritesRepository
 ) {
-    operator fun invoke() = favoritesRepository.get()
+    suspend operator fun invoke() =
+        favoritesRepository.clearTable()
 }

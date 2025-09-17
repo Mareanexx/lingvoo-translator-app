@@ -10,7 +10,7 @@ import ru.mareanexx.feature_translate.domain.entity.FavoriteTranslation
 
 @Dao
 interface FavoritesDao {
-    @Query("SELECT id, original, translation, date FROM favorites")
+    @Query("SELECT id, original, translation, date FROM favorites ORDER BY date DESC")
     fun get(): Flow<List<FavoriteTranslation>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -21,4 +21,7 @@ interface FavoritesDao {
 
     @Query("SELECT EXISTS(SELECT 1 FROM favorites WHERE id = :id)")
     suspend fun existsById(id: Long): Boolean
+
+    @Query("DELETE FROM favorites")
+    suspend fun clear()
 }

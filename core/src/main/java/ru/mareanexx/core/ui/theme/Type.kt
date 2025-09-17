@@ -11,14 +11,14 @@ val Typography = Typography(
         fontSize = 30.sp,
         lineHeight = 20.sp,
         fontWeight = FontWeight.Bold,
-        letterSpacing = 1.sp
+        letterSpacing = 0.1.sp
     ),
     labelSmall = TextStyle(
         fontFamily = SfFontFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 13.sp,
         lineHeight = 18.sp,
-        letterSpacing = 1.sp
+        letterSpacing = 0.1.sp
     ),
     titleSmall = TextStyle(
         fontFamily = SfFontFamily,
