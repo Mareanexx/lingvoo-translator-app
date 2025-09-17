@@ -1,5 +1,7 @@
 package ru.mareanexx.lingvootranslatorapp.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -48,7 +50,13 @@ fun AppNavHost() {
             modifier = Modifier.fillMaxSize().padding(innerPadding)
         ) {
             composable(
-                route = NavigationGraphRoutes.Favorites.route
+                route = NavigationGraphRoutes.Favorites.route,
+                enterTransition = {
+                    slideInHorizontally(
+                        animationSpec = tween(500),
+                        initialOffsetX = { -it }
+                    )
+                },
             ) {
                 FavoritesScreen(
                     onNavigateToMain = {
@@ -63,14 +71,36 @@ fun AppNavHost() {
                 )
             }
             composable(
-                route = NavigationGraphRoutes.Home.route
+                route = NavigationGraphRoutes.Home.route,
+                enterTransition = {
+                    slideInHorizontally(
+                        animationSpec = tween(500),
+                        initialOffsetX = { -it }
+                    )
+                }
             ) {
                 TranslatorScreen()
             }
             composable(
-                route = NavigationGraphRoutes.History.route
+                route = NavigationGraphRoutes.History.route,
+                enterTransition = {
+                    slideInHorizontally(
+                        animationSpec = tween(500),
+                        initialOffsetX = { it }
+                    )
+                }
             ) {
-                TranslationHistoryScreen()
+                TranslationHistoryScreen(
+                    onNavigateToMain = {
+                        navController.navigate(NavigationGraphRoutes.Home.route) {
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
+                )
             }
         }
     }

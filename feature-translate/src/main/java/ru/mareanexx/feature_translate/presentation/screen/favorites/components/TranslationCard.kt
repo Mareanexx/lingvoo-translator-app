@@ -27,19 +27,21 @@ import androidx.compose.ui.unit.dp
 import ru.mareanexx.core.ui.theme.FirstCardShape
 import ru.mareanexx.core.ui.theme.HeaderShape
 import ru.mareanexx.core.ui.theme.LingvooTranslatorAppTheme
-import ru.mareanexx.core.utils.date.DateFormatter
+import ru.mareanexx.core.utils.common.Translation
 import ru.mareanexx.feature_translate.R
 import ru.mareanexx.feature_translate.domain.entity.FavoriteTranslation
 import ru.mareanexx.feature_translate.presentation.components.buttons.CopyToClipboardButton
 import java.time.OffsetDateTime
 
 @Composable
-fun FavoriteTranslationCard(
-    translation: FavoriteTranslation,
+fun TranslationCard(
+    translation: Translation,
+    date: String,
     onDeleteTranslation: () -> Unit,
     onCopyToClipboard: () -> Unit,
     modifier: Modifier = Modifier,
-    isFirst: Boolean = false
+    isFirst: Boolean = false,
+    addToFavoriteButton: (@Composable () -> Unit)? = null
 ) {
     val swipeToDismissBoxState = rememberSwipeToDismissBoxState(
         confirmValueChange = {
@@ -105,7 +107,7 @@ fun FavoriteTranslationCard(
                 verticalArrangement = Arrangement.spacedBy(5.dp)
             ) {
                 Text(
-                    text = DateFormatter.formatFavoriteCardTime(translation.date),
+                    text = date,
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurface
                 )
@@ -120,10 +122,18 @@ fun FavoriteTranslationCard(
                     color = MaterialTheme.colorScheme.onSecondaryContainer
                 )
             }
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                CopyToClipboardButton(
+                    onContentCopyClicked = onCopyToClipboard
+                )
 
-            CopyToClipboardButton(
-                onContentCopyClicked = onCopyToClipboard
-            )
+                addToFavoriteButton?.let {
+                    addToFavoriteButton()
+                }
+            }
         }
     }
 }
@@ -132,8 +142,8 @@ fun FavoriteTranslationCard(
 @Composable
 private fun PreviewFavoriteTranslationCardFirstItem() {
     LingvooTranslatorAppTheme {
-        FavoriteTranslationCard(
-            FavoriteTranslation(1, "Hello", "Привет", OffsetDateTime.now()),
+        TranslationCard(
+            FavoriteTranslation(1, "Hello", "Привет", OffsetDateTime.now()), date = "25 July, 2025 - 20:13",
             {}, {}, isFirst = true
         )
     }
@@ -143,8 +153,8 @@ private fun PreviewFavoriteTranslationCardFirstItem() {
 @Composable
 private fun PreviewFavoriteTranslationCard() {
     LingvooTranslatorAppTheme {
-        FavoriteTranslationCard(
-            FavoriteTranslation(1, "Hello", "Привет", OffsetDateTime.now()),
+        TranslationCard(
+            FavoriteTranslation(1, "Hello", "Привет", OffsetDateTime.now()), date = "25 July, 2025 - 20:13",
             {}, {}, isFirst = false
         )
     }

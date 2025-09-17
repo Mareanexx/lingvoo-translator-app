@@ -13,7 +13,7 @@ import javax.inject.Inject
 class TranslationHistoryRepositoryImpl @Inject constructor(
     private val translationHistoryDao: TranslationHistoryDao
 ): TranslationHistoryRepository {
-    override suspend fun get(): Flow<List<TranslationHistoryItem>> = translationHistoryDao.get()
+    override fun get(): Flow<List<TranslationHistoryItem>> = translationHistoryDao.get()
 
     override suspend fun delete(toDelete: DeleteTranslationRequest): BaseResult<Unit, Unit> {
         val resultRows = translationHistoryDao.deleteById(toDelete.id)
@@ -23,6 +23,8 @@ class TranslationHistoryRepositoryImpl @Inject constructor(
             BaseResult.Success(Unit)
         }
     }
+
+    override suspend fun clearAll() = translationHistoryDao.clearAll()
 
     override suspend fun addNew(word: WordTranslation): BaseResult<Unit, Unit> {
         val resultId = translationHistoryDao.insert(word.toHistoryItem())

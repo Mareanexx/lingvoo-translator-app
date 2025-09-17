@@ -5,6 +5,7 @@ import ru.mareanexx.feature_translate.data.local.entity.FavoriteTranslationEntit
 import ru.mareanexx.feature_translate.data.local.entity.TranslationHistoryEntity
 import ru.mareanexx.feature_translate.data.remote.dto.DeleteTranslationRequest
 import ru.mareanexx.feature_translate.domain.entity.FavoriteTranslation
+import ru.mareanexx.feature_translate.domain.entity.HistoryWithFavorite
 import ru.mareanexx.feature_translate.domain.entity.WordTranslationWithFavorite
 import java.time.LocalDate
 import java.time.OffsetDateTime
@@ -42,4 +43,14 @@ fun WordTranslation.toDelete() = DeleteTranslationRequest(
 
 fun FavoriteTranslation.toDeleteRequest() = DeleteTranslationRequest(
     id = id
+)
+
+fun HistoryWithFavorite.toDeleteRequest() = DeleteTranslationRequest(
+    id = id
+)
+
+fun HistoryWithFavorite.toWord() = WordTranslation(
+    id = id,
+    original = original,
+    translation = translation
 )

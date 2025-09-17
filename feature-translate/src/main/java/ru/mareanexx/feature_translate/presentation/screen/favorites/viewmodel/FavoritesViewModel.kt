@@ -36,7 +36,7 @@ class FavoritesViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<SecondaryScreenEvent>()
     val eventFlow: SharedFlow<SecondaryScreenEvent> get() = _eventFlow
 
-    // events
+    // event emitters
     fun showDeleteDialog() =
         viewModelScope.launch { _eventFlow.emit(SecondaryScreenEvent.ShowDeleteDialog) }
     fun showToast(error: Error) =

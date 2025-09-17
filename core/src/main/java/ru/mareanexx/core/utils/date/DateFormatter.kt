@@ -1,5 +1,6 @@
 package ru.mareanexx.core.utils.date
 
+import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
@@ -14,6 +15,15 @@ object DateFormatter {
             "Today - ${dateTime.format(timeFormatter)}"
         } else {
             "${dateTime.format(dateFormatter)} - ${dateTime.format(timeFormatter)}"
+        }
+    }
+
+    fun formatHistoryCardTime(date: LocalDate): String {
+        val now = LocalDate.now()
+        return if (date.isEqual(now)) {
+            "Today"
+        } else {
+            "${date.format(dateFormatter)}"
         }
     }
 }

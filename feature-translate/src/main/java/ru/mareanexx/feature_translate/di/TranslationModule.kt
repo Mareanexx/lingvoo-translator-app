@@ -24,9 +24,10 @@ object TranslationModule {
     @Provides
     fun provideTranslationRepository(
         translationApi: TranslationApi,
+        dao: TranslationHistoryDao,
         networkMonitor: NetworkMonitor
     ): TranslationRepository =
-        TranslationRepositoryImpl(translationApi, networkMonitor)
+        TranslationRepositoryImpl(translationApi, dao, networkMonitor)
 
     @Singleton
     @Provides
