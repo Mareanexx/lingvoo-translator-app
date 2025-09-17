@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import ru.mareanexx.core.utils.common.WordTranslation
 
-interface TranslateApi {
-    @GET
+interface TranslationApi {
+    @GET("search")
     suspend fun getTranslation(@Query("search") search: String): Response<WordTranslation>
 }

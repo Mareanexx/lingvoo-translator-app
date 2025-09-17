@@ -1,4 +1,4 @@
-package ru.mareanexx.core.utils.tracker
+package ru.mareanexx.core.utils.network.tracker
 
 import android.content.Context
 import android.net.ConnectivityManager

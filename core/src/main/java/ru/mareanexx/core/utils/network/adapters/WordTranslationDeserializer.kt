@@ -1,4 +1,4 @@
-package ru.mareanexx.core.utils.adapters
+package ru.mareanexx.core.utils.network.adapters
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

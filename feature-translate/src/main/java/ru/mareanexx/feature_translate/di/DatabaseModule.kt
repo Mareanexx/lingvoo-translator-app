@@ -23,11 +23,9 @@ object DatabaseModule {
         ).build()
     }
 
-    @Singleton
     @Provides
     fun provideFavoritesDao(db: LingvooDatabase) = db.favoritesDao()
 
-    @Singleton
     @Provides
     fun provideTranslationHistoryDao(db: LingvooDatabase) =
         db.translationHistoryDao()

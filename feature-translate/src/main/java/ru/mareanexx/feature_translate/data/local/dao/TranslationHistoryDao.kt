@@ -11,7 +11,7 @@ import ru.mareanexx.feature_translate.domain.entity.TranslationHistoryItem
 @Dao
 interface TranslationHistoryDao {
     @Query("SELECT id, original, translation, date FROM history")
-    suspend fun get(): Flow<List<TranslationHistoryItem>>
+    fun get(): Flow<List<TranslationHistoryItem>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(historyItem: TranslationHistoryEntity): Long

@@ -3,6 +3,8 @@ package ru.mareanexx.feature_translate.data.mapper
 import ru.mareanexx.core.utils.common.WordTranslation
 import ru.mareanexx.feature_translate.data.local.entity.FavoriteTranslationEntity
 import ru.mareanexx.feature_translate.data.local.entity.TranslationHistoryEntity
+import ru.mareanexx.feature_translate.data.remote.dto.DeleteTranslationRequest
+import ru.mareanexx.feature_translate.domain.entity.WordTranslationWithFavorite
 import java.time.LocalDate
 import java.time.OffsetDateTime
 
@@ -18,4 +20,21 @@ fun WordTranslation.toHistoryItem() = TranslationHistoryEntity(
     original = original,
     translation = translation,
     date = LocalDate.now()
+)
+
+fun WordTranslation.toWithFavorite(isFavorite: Boolean) = WordTranslationWithFavorite(
+    id = id,
+    original = original,
+    translation = translation,
+    isFavorite = isFavorite
+)
+
+fun WordTranslationWithFavorite.toWord() = WordTranslation(
+    id = id,
+    original = original,
+    translation = translation
+)
+
+fun WordTranslation.toDelete() = DeleteTranslationRequest(
+    id = id
 )

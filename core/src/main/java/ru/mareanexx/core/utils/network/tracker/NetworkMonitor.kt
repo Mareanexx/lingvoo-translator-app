@@ -1,4 +1,4 @@
-package ru.mareanexx.core.utils.tracker
+package ru.mareanexx.core.utils.network.tracker
 
 interface NetworkMonitor {
     fun isConnected(): Boolean

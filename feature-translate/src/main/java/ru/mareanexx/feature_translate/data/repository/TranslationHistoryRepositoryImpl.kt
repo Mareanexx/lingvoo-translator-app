@@ -1,8 +1,8 @@
 package ru.mareanexx.feature_translate.data.repository
 
 import kotlinx.coroutines.flow.Flow
-import ru.mareanexx.core.utils.common.WordTranslation
 import ru.mareanexx.core.utils.common.BaseResult
+import ru.mareanexx.core.utils.common.WordTranslation
 import ru.mareanexx.feature_translate.data.local.dao.TranslationHistoryDao
 import ru.mareanexx.feature_translate.data.mapper.toHistoryItem
 import ru.mareanexx.feature_translate.data.remote.dto.DeleteTranslationRequest
@@ -10,7 +10,7 @@ import ru.mareanexx.feature_translate.domain.entity.TranslationHistoryItem
 import ru.mareanexx.feature_translate.domain.repository.TranslationHistoryRepository
 import javax.inject.Inject
 
-class TranslationHistoryRepository @Inject constructor(
+class TranslationHistoryRepositoryImpl @Inject constructor(
     private val translationHistoryDao: TranslationHistoryDao
 ): TranslationHistoryRepository {
     override suspend fun get(): Flow<List<TranslationHistoryItem>> = translationHistoryDao.get()

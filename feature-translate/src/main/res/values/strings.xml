@@ -1,3 +1,48 @@
 <resources>
+    <!--Main Translation Screen-->
+    <string name="lbl_english_lang">English</string>
+    <string name="lbl_russian_lang">Russian</string>
+    <string name="et_placeholder_enter_word_here">Enter the word here…</string>
 
+    <!--Favorites Screen-->
+    <string name="header_favorites">Favorites</string>
+    <string name="ttl_empty_favorites_list">You have no favorites yet!</string>
+    <string name="sub_ttl_empty_favorites_list">Let\'s translate and save some words.</string>
+    <string name="dialog_ttl_delete_all_favorites">Delete all favorites?</string>
+    <string name="dialog_sub_delete_favorites">Are you sure you want to delete all your favorite translates? You can\'t revert changes later.</string>
+
+    <!--History Screen-->
+    <string name="header_history">History</string>
+    <string name="ttl_empty_history">You have no translation history yet!</string>
+    <string name="sub_ttl_empty_history">Let\'s translate some words and then they will appear here.</string>
+    <string name="dialog_ttl_clear_history">Clear translation history?</string>
+    <string name="dialog_sub_clear_history">Are you sure you want to delete all your translate results? You can\'t revert changes later.</string>
+
+    <!--Bottom Navigation Bar-->
+    <string name="cd_home_route">Navigate to Home translation screen</string>
+    <string name="cd_navigate_to_favorites_screen">Navigate to Favorite translations screen</string>
+    <string name="cd_navigate_to_history_screen">Navigate to translation History screen</string>
+
+    <!--No Internet Connection Dialog-->
+    <string name="btn_txt_retry">Retry</string>
+    <string name="dialog_ttl_no_internet_connection">No Internet Connection</string>
+    <string name="dialog_sub_no_internet_connection">Can\'t load translation. Try again or get back later.</string>
+
+    <!--Toast texts-->
+    <string name="txt_toast_server_error">Server is not responding. Please try again in a few minutes.</string>
+    <string name="txt_toast_client_error">Request failed. Please check your input and try again.</string>
+    <string name="txt_toast_unknown_error">An unexpected error occurred. Please try again</string>
+    <string name="feature_not_implemented_yet">This feature is not implemented yet!</string>
+
+    <!--Common-->
+    <string name="btn_go_for_words">Go For Words</string>
+    <string name="btn_txt_delete">Delete</string>
+    <string name="btn_txt_cancel">Cancel</string>
+    <string name="cd_open_settings">Open translation settings</string>
+    <string name="cd_swap_languages">Swap languages</string>
+    <string name="cd_btn_clear_user_input">Clear all input text</string>
+    <string name="txt_placeholder_no_translation">Unfortunately, the translation was not found</string>
+    <string name="cd_btn_add_to_favorite">Click to add to favorite translations or remove from it</string>
+    <string name="cd_btn_copy_to_clipboard">Copy translation to clipboard</string>
+    <string name="txt_toast_copied_to_clipboard">Translation copied to clipboard!</string>
 </resources>

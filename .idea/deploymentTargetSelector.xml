@@ -11,6 +11,9 @@
       <SelectionState runConfigName="PreviewDeleteConfirmationDialog">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="PreviewTranslatorScreen">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>

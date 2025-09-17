@@ -13,13 +13,12 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.mareanexx.core.utils.BuildConfig
-import ru.mareanexx.core.utils.adapters.LocalDateAdapter
-import ru.mareanexx.core.utils.adapters.OffsetDateTimeAdapter
+import ru.mareanexx.core.utils.network.adapters.LocalDateAdapter
+import ru.mareanexx.core.utils.network.adapters.OffsetDateTimeAdapter
+import ru.mareanexx.core.utils.network.adapters.WordTranslationDeserializer
 import ru.mareanexx.core.utils.common.WordTranslation
-import ru.mareanexx.core.utils.adapters.WordTranslationDeserializer
-import ru.mareanexx.core.utils.tracker.NetworkMonitor
-import ru.mareanexx.core.utils.tracker.NetworkMonitorImpl
-import ru.mareanexx.feature_translate.data.remote.api.TranslateApi
+import ru.mareanexx.core.utils.network.tracker.NetworkMonitor
+import ru.mareanexx.core.utils.network.tracker.NetworkMonitorImpl
 import java.time.LocalDate
 import java.time.OffsetDateTime
 import javax.inject.Singleton
@@ -69,8 +68,4 @@ object NetworkModule {
     fun provideNetworkMonitor(
         @ApplicationContext context: Context
     ): NetworkMonitor = NetworkMonitorImpl(context)
-
-    @Singleton
-    @Provides
-    fun provideTranslateApi(retrofit: Retrofit) = retrofit.create(TranslateApi::class.java)
 }

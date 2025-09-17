@@ -11,4 +11,5 @@ android {
 dependencies {
     implementation(project(":core"))
     ksp(libs.hilt.compiler)
+    ksp(libs.androidx.room.compiler)
 }

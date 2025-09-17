@@ -8,7 +8,9 @@ data class Error(
 enum class ErrorType {
     NoInternetConnection,
     ServerError,
-    ClientError
+    ClientError,
+    UnknownError,
+    NoTranslation
 }
 
 fun resolveErrorType(code: Int) = when {

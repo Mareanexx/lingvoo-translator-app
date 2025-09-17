@@ -1,9 +1,10 @@
 package ru.mareanexx.feature_translate.data.repository
 
 import kotlinx.coroutines.flow.Flow
-import ru.mareanexx.core.utils.common.WordTranslation
 import ru.mareanexx.core.utils.common.BaseResult
+import ru.mareanexx.core.utils.common.WordTranslation
 import ru.mareanexx.feature_translate.data.local.dao.FavoritesDao
+import ru.mareanexx.feature_translate.data.mapper.toDelete
 import ru.mareanexx.feature_translate.data.mapper.toFavorites
 import ru.mareanexx.feature_translate.data.remote.dto.DeleteTranslationRequest
 import ru.mareanexx.feature_translate.domain.entity.FavoriteTranslation
@@ -24,6 +25,14 @@ class FavoritesRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun switchIsFavorite(
+        word: WordTranslation,
+        isAppOperation: Boolean
+    ): BaseResult<Unit, Unit> {
+        return if (!isAppOperation) delete(word.toDelete())
+        else addNew(word)
+    }
+
     override suspend fun addNew(word: WordTranslation): BaseResult<Unit, Unit> {
         val resultId = favoritesDao.insert(word.toFavorites())
         return if (resultId == -1L) {
@@ -32,4 +41,7 @@ class FavoritesRepositoryImpl @Inject constructor(
             BaseResult.Success(Unit)
         }
     }
+
+    override suspend fun checkIsInFavorites(word: WordTranslation): Boolean =
+        favoritesDao.existsById(word.id)
 }
